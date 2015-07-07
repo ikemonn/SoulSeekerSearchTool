@@ -1,0 +1,2 @@
+# SoulSeekerSearchTool
+SoulSeekerでキャラの情報を検索する時に使うツール
