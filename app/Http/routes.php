@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SearchController@selectAll');
+
+
+Route::get('input','SearchController@input');
+
+Route::post('res','SearchController@res');
+
+Route::get('select','SearchController@select');
