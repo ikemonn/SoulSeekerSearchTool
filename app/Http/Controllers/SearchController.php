@@ -14,9 +14,11 @@ class SearchController extends Controller {
 
 
     public function res() {
+        $db_name = 'full_heros';
+
         $name = Input::get('name');
 
-        $heros = DB::table('heros')
+        $heros = DB::table($db_name)
                 ->where('name', 'LIKE', $name)
                 ->get();
 
@@ -25,8 +27,9 @@ class SearchController extends Controller {
     }
 
     public function selectAll() {
+        $db_name = 'full_heros';
 
-        $heros = DB::table('heros')->get();
+        $heros = DB::table($db_name)->get();
         return view('select')->with('heros', $heros);
     }
 

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-select
+SoulSeeker ☆6一覧
 @stop
 
 @section('content')
@@ -12,6 +12,8 @@ select
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
+				<th>サポランク</th>
+				<th>リダランク</th>
 				<th>No.</th>
 				<th>名前</th>
 				<th>タイプ</th>
@@ -21,15 +23,17 @@ select
 				<th>攻撃速度</th>
 				<th>移動速度</th>
 				<th>クリティカル率</th>
-				<th>攻撃サポート率</th>
-				<th>防御サポート率</th>
-				<th>体力サポート率</th>
+				<th>攻撃サポ率</th>
+				<th>防御サポ率</th>
+				<th>体力サポ率</th>
 			</tr>
 
 		</thead>
 		<tbody>
 			@foreach($heros as $hero)
 				<tr>
+					<td>{{$hero->support_nature_rank}}</td>
+					<td>{{$hero->leader_nature_rank}}</td>
 					<td>{{$hero->id}}</td>
 					<td>{{$hero->name}}</td>
 					<td>{{$hero->type}}</td>
