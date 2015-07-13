@@ -23,10 +23,6 @@ SoulSeeker Search Tool
     <li role="presentation"><a role="menuitem" tabindex="-1" href="leader_ranking">リダランク</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="support_ranking">サポランク</a></li>
 	<li role="presentation"><a role="menuitem" tabindex="-1" href="./">No.順</a></li>
-   <!--  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
   </ul>
   <!-- リストここまで -->
 
@@ -57,9 +53,9 @@ SoulSeeker Search Tool
 		<tbody>
 			@foreach($heros as $hero)
 				<tr>
-					<td>{{$hero->support_nature_rank}}</td>
-					<td>{{$hero->leader_nature_rank}}</td>
-					<td>{{$hero->id}}</td>
+					<td class="support">{{$hero->support_nature_rank}}</td>
+					<td class="leader">{{$hero->leader_nature_rank}}</td>
+					<td class="no">{{$hero->id}}</td>
 					<td>{{$hero->name}}</td>
 					<td>{{$hero->type}}</td>
 					<td>{{$hero->attack}}</td>
@@ -73,10 +69,7 @@ SoulSeeker Search Tool
 					<td>{{$hero->hp_support}}</td>
 				</tr>
 			@endforeach
-
 		</tbody>
 	</table>
 </div>
-
-
 @stop

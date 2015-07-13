@@ -14,5 +14,8 @@
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- <script src="{{ asset('javascripts/index.js') }}" type="text/javascript"></script> -->
+    <script id="script" type="text/javascript" src="{{ URL::asset('js/index.js') }}" data-string ='<?php echo  json_encode($sort, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>'></script>
+
 </body>
 </html>
