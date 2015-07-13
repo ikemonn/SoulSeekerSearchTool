@@ -1,12 +1,12 @@
 @extends('layout')
 
 @section('title')
-SoulSeeker ☆6一覧
+SoulSeeker Search Tool
 @stop
 
 @section('content')
 
-<h3>list</h3>
+<h3>SoulSeeker ☆6一覧</h3>
 
 <div class="table-responsive">
 	<table class="table table-bordered table-striped">
