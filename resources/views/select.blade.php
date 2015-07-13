@@ -70,7 +70,7 @@ SoulSeeker Search Tool
 					<td>{{$hero->critical}}</td>
 					<td>{{$hero->attack_support}}</td>
 					<td>{{$hero->defence_support}}</td>
-					<td>{{$hero->critical}}</td>
+					<td>{{$hero->hp_support}}</td>
 				</tr>
 			@endforeach
 

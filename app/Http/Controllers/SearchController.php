@@ -40,6 +40,7 @@ class SearchController extends Controller {
 
         $heros = DB::table($db_name)
                     ->orderBy('leader_nature_rank','asc')
+                    ->orderBy('id','asc')
                     ->get();
         return view('select')->with('heros', $heros);
     }
@@ -50,6 +51,7 @@ class SearchController extends Controller {
 
         $heros = DB::table($db_name)
                     ->orderBy('support_nature_rank','asc')
+                    ->orderBy('id','asc')
                     ->get();
         return view('select')->with('heros', $heros);
     }
