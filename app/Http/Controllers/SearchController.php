@@ -33,10 +33,7 @@ class SearchController extends Controller {
         $heros = DB::table($db_name)
                     ->orderBy('id','asc')
                     ->get();
-
-        $this->translateTypeName($heros);
-
-        return $this->returnValue('select',['sort'=> $sort, 'heros'=> $heros]);
+        return $this->returnSelectView($sort, $heros);
     }
 
     // リーダー資質ランキング
@@ -49,7 +46,7 @@ class SearchController extends Controller {
                     ->orderBy('leader_nature_rank','asc')
                     ->orderBy('id','asc')
                     ->get();
-        return $this->returnValue('select',['sort'=> $sort, 'heros'=> $heros]);
+        return $this->returnSelectView($sort, $heros);
     }
 
     // サポート資質ランキング
@@ -63,6 +60,12 @@ class SearchController extends Controller {
                     ->orderBy('id','asc')
                     ->get();
 
+        return $this->returnSelectView($sort, $heros);
+    }
+
+    // selectViewにデータを返す
+    private function returnSelectView($sort, $heros) {
+        $this->translateTypeName($heros);
         return $this->returnValue('select',['sort'=> $sort, 'heros'=> $heros]);
     }
 
