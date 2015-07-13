@@ -1,12 +1,17 @@
 <?php
 
-    //冒頭に追加
-    $url = parse_url(getenv("DATABASE_URL"));
+    $host = getenv('DB_HOST');
+    $database = getenv('DB_DATABASE');
+    $username = getenv('DB_USERNAME');
+    $password = getenv('DB_PASSWORD');
 
-    $host = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $database = substr($url["path"], 1);
+    if (getenv("DATABASE_URL")) {
+        $url = parse_url(getenv("DATABASE_URL"));
+        $host = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
+        $database = substr($url["path"], 1);
+    }
     
 return [
 
