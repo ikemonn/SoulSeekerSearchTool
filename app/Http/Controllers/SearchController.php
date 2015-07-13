@@ -30,7 +30,10 @@ class SearchController extends Controller {
     public function selectAll() {
         $db_name = 'full_heros';
 
-        $heros = DB::table($db_name)->get();
+        $heros = DB::table($db_name)
+                    ->orderBy('id','asc')
+                    ->get();
+
         return view('select')->with('heros', $heros);
     }
 
