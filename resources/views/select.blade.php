@@ -8,6 +8,31 @@ SoulSeeker Search Tool
 
 <h3>SoulSeeker ☆6一覧</h3>
 
+
+<div class="dropdown">
+
+  <!-- ここが表示されるボタン <a>タグでもOK -->
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    ソート
+    <span class="caret"></span>
+  </button>
+  <!-- ボタンここまで -->
+  
+  <!-- ここはボタンを押すと表示されるリスト -->
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="leader_ranking">リダランク</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="support_ranking">サポランク</a></li>
+
+   <!--  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
+  </ul>
+  <!-- リストここまで -->
+
+</div>
+
+
 <div class="table-responsive">
 	<table class="table table-bordered table-striped">
 		<thead>

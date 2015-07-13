@@ -26,10 +26,31 @@ class SearchController extends Controller {
         return view('select')->with('heros', $heros);
     }
 
+    // 一覧表示
     public function selectAll() {
         $db_name = 'full_heros';
 
         $heros = DB::table($db_name)->get();
+        return view('select')->with('heros', $heros);
+    }
+
+    // リーダー資質ランキング
+    public function sortLeaderRank() {
+        $db_name = 'full_heros';
+
+        $heros = DB::table($db_name)
+                    ->orderBy('leader_nature_rank','asc')
+                    ->get();
+        return view('select')->with('heros', $heros);
+    }
+
+    // サポート資質ランキング
+    public function sortSupportRank() {
+        $db_name = 'full_heros';
+
+        $heros = DB::table($db_name)
+                    ->orderBy('support_nature_rank','asc')
+                    ->get();
         return view('select')->with('heros', $heros);
     }
 

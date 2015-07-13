@@ -11,11 +11,18 @@
 |
 */
 
+// 一覧表示
 Route::get('/', 'SearchController@selectAll');
 
+// リーダー資質ランキング
+Route::get('leader_ranking','SearchController@sortLeaderRank');
+
+// サポート資質ランキング
+Route::get('support_ranking','SearchController@sortSupportRank');
 
 Route::get('input','SearchController@input');
 
 Route::post('res','SearchController@res');
 
 Route::get('select','SearchController@select');
+
