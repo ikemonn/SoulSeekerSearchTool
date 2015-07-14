@@ -13,14 +13,12 @@ class SearchController extends Controller {
         // No順ソート
         $sort = 'No';
 
-        $db_name = 'full_heros';
-        $heros = DB::table($db_name)
-                    ->orderBy('id','asc')
-                    ->get();
+        $full_heros = new Search();
+        $heros = $full_heros->selectAll();
         return $this->returnSelectView($heros, $sort);
     }
 
-    // 一覧表示
+    // 名前のあいまい検索
     public function selectName($name) {
 
         $full_heros = new Search();
