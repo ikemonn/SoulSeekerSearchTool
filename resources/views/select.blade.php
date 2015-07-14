@@ -31,7 +31,7 @@ SoulSeeker Search Tool
 
 <div class="table-responsive">
 	<table class="table table-bordered table-striped">
-		<thead>
+		<thead class="scrollHead">
 			<tr>
 				<th>サポランク</th>
 				<th>リダランク</th>
@@ -50,7 +50,7 @@ SoulSeeker Search Tool
 			</tr>
 
 		</thead>
-		<tbody>
+		<tbody class="scrollBody">
 			@foreach($heros as $hero)
 				<tr>
 					<td class="support">{{$hero->support_nature_rank}}</td>
