@@ -10,7 +10,7 @@ SoulSeeker Search Tool
 
 <hr/>
 
-{!! Form::open(array('url' => '/', 'method' => 'get')) !!}
+{!! Form::open(array('url' => URL::to('/', array(), true), 'method' => 'get')) !!}
     <div class="form-group">
         {!! Form::label('name', '名前:') !!}
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
