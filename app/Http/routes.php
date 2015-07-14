@@ -14,6 +14,8 @@
 // 一覧表示
 Route::get('/', 'SearchController@selectAll');
 
+
+
 // リーダー資質ランキング
 Route::get('leader_ranking','SearchController@sortLeaderRank');
 
@@ -26,3 +28,5 @@ Route::post('res','SearchController@res');
 
 Route::get('select','SearchController@select');
 
+// 名前検索
+Route::get('/{name}', 'SearchController@selectName');
