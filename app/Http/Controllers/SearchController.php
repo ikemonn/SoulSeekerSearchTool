@@ -10,12 +10,18 @@ class SearchController extends Controller {
 
     // 一覧表示
     public function selectAll() {
-        // No順ソート
-        $sort = 'No';
 
-        $full_heros = new Search();
-        $heros = $full_heros->selectAll();
-        return $this->returnSelectView($heros, $sort);
+        $input = \Request::all();
+        if (empty($input['name']) === false) {
+            return $this->selectName($input['name']);
+        } else {
+            // No順ソート
+            $sort = 'No';
+
+            $full_heros = new Search();
+            $heros = $full_heros->selectAll();
+            return $this->returnSelectView($heros, $sort);
+        }
     }
 
     // 名前のあいまい検索

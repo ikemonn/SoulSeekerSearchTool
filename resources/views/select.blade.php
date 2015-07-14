@@ -6,7 +6,22 @@ SoulSeeker Search Tool
 
 @section('content')
 
-<h3>SoulSeeker ☆6一覧</h3>
+<h3><a href="/">SoulSeeker ☆6一覧</a></h3>
+
+<hr/>
+
+{!! Form::open(array('url' => '/', 'method' => 'get')) !!}
+    <div class="form-group">
+        {!! Form::label('name', '名前:') !!}
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        {!! Form::submit('検索', ['class' => 'btn btn-primary form-control']) !!}
+    </div>    
+{!! Form::close() !!}
+
+
+
+
+
 
 
 <div class="dropdown">
@@ -25,7 +40,6 @@ SoulSeeker Search Tool
 	<li role="presentation"><a role="menuitem" tabindex="-1" href="./">No.順</a></li>
   </ul>
   <!-- リストここまで -->
-
 </div>
 
 
