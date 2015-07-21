@@ -9,17 +9,14 @@ SoulSeeker Search Tool
 <h3><a href="/">SoulSeeker ☆6一覧</a></h3>
 
 <hr/>
-
+<div class="form-inline form-group">
 {!! Form::open(array('url' => URL::to('/', array(), true), 'method' => 'get')) !!}
     <div class="form-group">
-        {!! Form::label('name', '名前:') !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    </div>    
-    <div class="form-group">
-		{!! Form::submit('検索', ['class' => 'btn btn-primary form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => '名前']) !!}
+		    {!! Form::submit('検索', ['class' => 'btn btn-primary']) !!}
     </div>
 {!! Form::close() !!}
-
+</div>
 
 
 
@@ -34,7 +31,7 @@ SoulSeeker Search Tool
     <span class="caret"></span>
   </button>
   <!-- ボタンここまで -->
-  
+
   <!-- ここはボタンを押すと表示されるリスト -->
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
     <li role="presentation"><a role="menuitem" tabindex="-1" href="leader_ranking">リダランク</a></li>
