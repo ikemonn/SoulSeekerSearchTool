@@ -54,7 +54,7 @@ class Search extends Model
                     $type = '不明';
                     break;
             }
-            $hero_data->type = $type;
+            $hero_data->type_name = $type;
         }
         return $heros;
     }

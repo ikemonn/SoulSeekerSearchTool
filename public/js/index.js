@@ -5,23 +5,8 @@ $(document).ready(function () {
 	var sort = JSON.parse(script.attr('data-string'));
 	changeColor(sort);
 
+	$(":checkbox").click(refineType);
 
-	// setInterval(function() {
- //        $.ajax({
- //            type: 'GET',
- //            url: '/check.php',
- //            cache: false,
- //            dataType: 'text',
- //            success: function(data) {
- //                document.getElementById('after').style.display = "block";
- //                $('#after_detail').html(data);
- //            },
- //            error: function() {
- //                alert("読み込み失敗");
- //            }
- //        });
- //    }, 3000);
-	
 });
 
 
@@ -44,5 +29,20 @@ function changeColor(sortKind) {
 	if (column != null) {
 		column.addClass("success");
 	};
-	
+}
+
+function refineType() {
+	// 全てのタイプを取得し、選択されたものだけ表示する
+	var all_type_list = $('#type-form [name=type]').map(function(){return $(this).val();});
+
+	var selected_type_list = $('#type-form [name=type]:checked').map(function(){return $(this).val();});
+	var unselected_type_list = $(all_type_list).not(selected_type_list).get();
+
+	$.each(selected_type_list, function(index, elem) {
+		$('.' + elem).show();
+	})
+
+	$.each(unselected_type_list, function(index, elem) {
+		$('.' + elem).hide();
+	})
 }
