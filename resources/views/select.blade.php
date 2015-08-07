@@ -39,24 +39,32 @@ SoulSeeker Search Tool
             </div>
 
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <form id="type-form">
                 <div class="form-group search-check-box">
                     <div class="checkbox-inline">
-                        <input type="checkbox" value="type-1" name="type" id="attack_type" checked>
+                        <input type="checkbox" value="type-1" name="type" class="type_checkbox" id="attack_type" checked>
                         <label for="attack_type">攻撃型</label>
                     </div>
                     <div class="checkbox-inline">
-                        <input type="checkbox" value="type-2" name="type" id="deffence_type" checked>
+                        <input type="checkbox" value="type-2" name="type" class="type_checkbox" id="deffence_type" checked>
                         <label for="deffence_type">防御型</label>
                     </div>
                     <div class="checkbox-inline">
-                        <input type="checkbox" value="type-3" name="type" id="almighty_type" checked>
+                        <input type="checkbox" value="type-3" name="type" class="type_checkbox" id="almighty_type" checked>
                         <label for="almighty_type">万能型</label>
                     </div>
                     <div class="checkbox-inline">
-                        <input type="checkbox" value="type-4" name="type" id="support_type" checked>
+                        <input type="checkbox" value="type-4" name="type" class="type_checkbox" id="support_type" checked>
                         <label for="support_type">サポート型</label>
+                    </div>
+                    <div class="checkbox-inline">
+                        <input type="checkbox" value="select-all" name="select_type" id="select_all">
+                        <label for="select_all">全選択</label>
+                    </div>
+                    <div class="checkbox-inline">
+                        <input type="checkbox" value="disselect-all" name="select_type" id="disselect_all">
+                        <label for="disselect_all">全選択解除</label>
                     </div>
                 </div>
             </form>
