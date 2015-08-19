@@ -11,28 +11,49 @@ class CalcRanking extends Model
 
     // 攻撃力のランク付け
     public function calcAttackRanking() {
-        $sortData = DB::select(DB::raw("select rank() over (order by attack desc) as rank, id , attack from full_heros;"));
+        $sortData = DB::select(DB::raw("select rank() over (order by attack desc) as rank, id  from full_heros;"));
 
         return $this->formatRankingData($sortData);
     }
 
     // 防御力のランク付け
     public function calcDefenceRanking() {
-        $sortData = DB::select(DB::raw("select rank() over (order by defence desc) as rank, id , attack from full_heros;"));
+        $sortData = DB::select(DB::raw("select rank() over (order by defence desc) as rank, id  from full_heros;"));
 
         return $this->formatRankingData($sortData);
     }
 
     // 体力のランク付け
     public function calcHpRanking() {
-        $sortData = DB::select(DB::raw("select rank() over (order by hp desc) as rank, id , attack from full_heros;"));
+        $sortData = DB::select(DB::raw("select rank() over (order by hp desc) as rank, id from full_heros;"));
 
         return $this->formatRankingData($sortData);
     }
 
     // 攻撃速度+クリティカル率のランク付け
     public function calcAttackSpeedCriticalRanking() {
-        $sortData = DB::select(DB::raw("select rank() over (order by attack_speed + critical desc) as rank, id , attack from full_heros;"));
+        $sortData = DB::select(DB::raw("select rank() over (order by attack_speed + critical desc) as rank, id  from full_heros;"));
+
+        return $this->formatRankingData($sortData);
+    }
+
+    // 攻撃力サポートのランク付け
+    public function calcAttackSupportRanking() {
+        $sortData = DB::select(DB::raw("select rank() over (order by attack * attack_support desc) as rank, id  from full_heros;"));
+
+        return $this->formatRankingData($sortData);
+    }
+
+    // 防御力サポートのランク付け
+    public function calcDefenceSupportRanking() {
+        $sortData = DB::select(DB::raw("select rank() over (order by defence * defence_support desc) as rank, id  from full_heros;"));
+
+        return $this->formatRankingData($sortData);
+    }
+
+    // HPサポートのランク付け
+    public function calcHpSupportRanking() {
+        $sortData = DB::select(DB::raw("select rank() over (order by hp * hp_support desc) as rank, id  from full_heros;"));
 
         return $this->formatRankingData($sortData);
     }

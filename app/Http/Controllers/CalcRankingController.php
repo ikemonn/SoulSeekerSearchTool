@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\CalcRanking;
+use App\Ranking;
 
 class CalcRankingController extends Controller
 {
@@ -17,10 +18,24 @@ class CalcRankingController extends Controller
      */
     public function index()
     {
+        $characterData = [];
+        // リーダーランキングを取得
         $leaderRanking = $this->setLeaderRanking();
-        var_dump($leaderRanking);
+        foreach ($leaderRanking as $id => $rank) {
+            $characterData[$id]['leader_rank'] = $rank;
+        }
+
+        $supportRanking = $this->setSupportRanking();
+        foreach ($supportRanking as $id => $rank) {
+            $characterData[$id]['support_rank'] = $rank;
+        }
+
+        $ranking = new Ranking();
+        $ranking->insertData($characterData);
+
     }
 
+    // リーダーランキングのセット
     public function setLeaderRanking()
     {
         // 各ランキングを取得
@@ -39,8 +54,31 @@ class CalcRankingController extends Controller
 
         // 順位付けを行う
         $ranking = $this->setAscRanking($charaData);
-        
+
         return $ranking;
+    }
+
+    // サポートランキングのセット
+    public function setSupportRanking()
+    {
+        // 各ランキングを取得
+        $calcRanking = new CalcRanking();
+        $attackSupportRankingData = $calcRanking->calcAttackSupportRanking();
+        $defenceSupportRankingData = $calcRanking->calcDefenceSupportRanking();
+        $hpSupportRankingData = $calcRanking->calcHpSupportRanking();
+
+        // 各キャラ毎に上記の数を合計し、昇順でソートする
+        $charaData = [];
+        for ($i=1; $i < count($attackSupportRankingData); $i++) {
+            $charaData[$i] = $attackSupportRankingData[$i] + $defenceSupportRankingData[$i] + $hpSupportRankingData[$i];
+        }
+        asort($charaData);
+
+        // 順位付けを行う
+        $ranking = $this->setAscRanking($charaData);
+
+        return $ranking;
+
     }
 
     // id => value 型の配列を渡すと、valueの昇順でランキングを付け、id => valueの配列を返す
