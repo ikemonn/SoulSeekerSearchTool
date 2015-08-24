@@ -9,29 +9,34 @@ class Search extends Model
 {
     protected $table = 'full_heros';
 
+    // rankingテーブルとのjoinクエリ
+    public function scopeJoinRanking($query) {
+        return $query->join('ranking', 'full_heros.id', '=', 'ranking.id');
+    }
+
 	// IDの昇順クエリ
     public function scopeIdAsc($query) {
-    	return $query->orderBy('id', 'asc');
+    	return $query->orderBy('full_heros.id', 'asc');
     }
 
     // IDソート全件表示
     public function selectAll() {
-    	return $this->translateTypeName(Search::idAsc()->get());
+    	return $this->translateTypeName(Search::joinRanking()->idAsc()->get());
     }
 
     // 名前であいまい検索
     public function fuzzySearchByName($name) {
-    	return $this->translateTypeName(Search::where('name', 'like', '%' . $name . '%')->get());
+    	return $this->translateTypeName(Search::joinRanking()->where('name', 'like', '%' . $name . '%')->get());
     }
 
     // リーダー資質ランキングでソート
     public function sortLeaderRank() {
-    	return $this->translateTypeName(Search::orderBy('leader_nature_rank','asc')->idAsc()->get());
+    	return $this->translateTypeName(Search::joinRanking()->orderBy('ranking.leader_rank','asc')->idAsc()->get());
     }
 
     // サポ資質ランキングでソート
     public function sortSupportRank() {
-    	return $this->translateTypeName(Search::orderBy('support_nature_rank','asc')->idAsc()->get());
+    	return $this->translateTypeName(Search::joinRanking()->orderBy('ranking.support_rank','asc')->idAsc()->get());
     }
 
     // タイプを対応するものに変換する
