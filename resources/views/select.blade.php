@@ -96,8 +96,8 @@ SoulSeeker Search Tool
 		<tbody class="scrollBody">
 			@foreach($heros as $hero)
 				<tr class="type-{{$hero->type}}">
-					<td class="support">{{$hero->support_nature_rank}}</td>
-					<td class="leader">{{$hero->leader_nature_rank}}</td>
+					<td class="support">{{$hero->support_rank}}</td>
+					<td class="leader">{{$hero->leader_rank}}</td>
 					<td class="no">{{$hero->id}}</td>
 					<td>{{$hero->name}}</td>
 					<td>{{$hero->type_name}}</td>
