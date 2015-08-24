@@ -54,6 +54,32 @@ class SearchTest extends TestCase
 
     }
 
+    /**
+     * リーダー資質ランキング
+     */
+    public function testSupportRank()
+    {
+        $full_heros = new Search;
+        $full_heros_data_list = $full_heros->sortSupportRank();
+
+        $this->assertEquals($full_heros_data_list[0]->name, "職人ミリンダ");
+        $this->assertEquals($full_heros_data_list[1]->name, "守護天使アンジェロ");
+        $this->assertEquals($full_heros_data_list[2]->name, "夏海のセレン");
+
+    }
+
+    /**
+     * あいまい検索
+     */
+    public function testfuzzySearchByName()
+    {
+        $full_heros = new Search;
+        $full_heros_data_list = $full_heros->fuzzySearchByName("ミスト");
+
+        $this->assertEquals($full_heros_data_list[0]->name, "勇者ミストラー");
+
+    }
+
 }
 
 class SearchTestSeeder extends Seeder
