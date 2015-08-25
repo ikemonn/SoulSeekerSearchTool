@@ -29,7 +29,6 @@ class CalcRankingController extends Controller
         foreach ($supportRanking as $id => $rank) {
             $characterData[$id]['support_rank'] = $rank;
         }
-
         $ranking = new Ranking();
         $ranking->insertData($characterData);
 
@@ -47,7 +46,7 @@ class CalcRankingController extends Controller
 
         // 各キャラ毎に上記の数を合計し、昇順でソートする
         $charaData = [];
-        for ($i=1; $i < count($attackRankingData); $i++) {
+        for ($i=1; $i <= count($attackRankingData); $i++) {
             $charaData[$i] = $attackRankingData[$i] + $defenceRankingData[$i] + $hpRankingData[$i] + $attackSpeedCriticalData[$i];
         }
         asort($charaData);
@@ -69,7 +68,7 @@ class CalcRankingController extends Controller
 
         // 各キャラ毎に上記の数を合計し、昇順でソートする
         $charaData = [];
-        for ($i=1; $i < count($attackSupportRankingData); $i++) {
+        for ($i=1; $i <= count($attackSupportRankingData); $i++) {
             $charaData[$i] = $attackSupportRankingData[$i] + $defenceSupportRankingData[$i] + $hpSupportRankingData[$i];
         }
         asort($charaData);
