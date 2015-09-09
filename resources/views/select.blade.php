@@ -6,7 +6,7 @@ SoulSeeker Search Tool
 
 @section('content')
 
-<h3><a href="/">SoulSeeker ☆6一覧</a></h3>
+<h3><a href="/">SoulSeeker ☆6・超越一覧</a></h3>
 
 <hr/>
 <div class="form-inline form-group">
@@ -39,7 +39,22 @@ SoulSeeker Search Tool
             </div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
+
+        <!-- <form id="rarity-form">
+            <div class="form-group">
+                <div class="radio-inline">
+                    <input type="radio" value="1" name="rarity" id="star6" checked>
+                    <label for="star6">☆6</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" value="2" name="rarity" id="star7">
+                    <label for="star7">超越</label>
+                </div>
+            </div>
+        </form> -->
+
+            <!-- タイプと選択・全選択ボタン -->
             <form id="type-form">
                 <div class="form-group search-check-box">
                     <div class="checkbox-inline">
