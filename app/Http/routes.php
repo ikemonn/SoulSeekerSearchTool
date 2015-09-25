@@ -28,8 +28,12 @@ Route::post('res','SearchController@res');
 
 Route::get('select','SearchController@select');
 
+Route::get('rarity/{rarity}','SearchController@selectRarity');
+
 // ランキングの計算
 Route::resource('calc', 'CalcRankingController');
+
+
 
 // 名前検索
 Route::get('/{name}', 'SearchController@selectName');

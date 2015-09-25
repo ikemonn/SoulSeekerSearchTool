@@ -29,6 +29,11 @@ class Search extends Model
     	return $this->translateTypeName(Search::joinRanking()->where('name', 'like', '%' . $name . '%')->get());
     }
 
+    // 指定されたレア度の情報を取得
+    public function searchByRarity($rarity) {
+    	return $this->translateTypeName(Search::joinRanking()->where('rarity', '=', $rarity)->get());
+    }
+
     // リーダー資質ランキングでソート
     public function sortLeaderRank() {
     	return $this->translateTypeName(Search::joinRanking()->orderBy('ranking.leader_rank','asc')->idAsc()->get());

@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -52,6 +52,15 @@ class SearchController extends Controller {
 
         return $this->returnSelectView($heros, $sort);
     }
+
+    // レア度で取得
+    public function selectRarity($rarity) {
+        var_dump('指定されたレア度は:'. $rarity);
+        $full_heros = new Search();
+        $heros = $full_heros->searchByRarity($rarity);
+        return $this->returnSelectView($heros);
+    }
+
 
     // selectViewにデータを返す
     private function returnSelectView($heros, $sort = null) {

@@ -24,6 +24,9 @@ $(document).ready(function () {
 		}
 	});
 
+	// レア度のラジオボタンをクリックされた時に、タイプの表示非表示を切り替え
+	$('input[name=rarity]').click(refineRarity);
+
 });
 
 
@@ -71,4 +74,32 @@ function refineType() {
 function selectAll(isSelectAll) {
 	$('#type-form [name=type]').map(function(){return $(this).prop('checked', isSelectAll);})
 	refineType();
+}
+
+// レア度での絞込み
+function refineRarity() {
+	// 全てのタイプを取得し、選択されたものだけ表示する
+	var all_type_list = $('#rarity-form [name=rarity]:checked').map(function(){return $(this).val();});
+
+	// console.log(all_type_list);
+	// var num = 6;
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: "rarity/" + num,
+	// 	data: "",
+	// 	success: function(msg){
+	// 	alert( "Data Saved: " + msg );
+	// }
+	// });
+	// var selected_type_list = $('#type-form [name=type]:checked').map(function(){return $(this).val();});
+	// var unselected_type_list = $(all_type_list).not(selected_type_list).get();
+	//
+	// // 表示
+	// $.each(selected_type_list, function(index, elem) {
+	// 	$('.' + elem).show();
+	// })
+	// // 非表示
+	// $.each(unselected_type_list, function(index, elem) {
+	// 	$('.' + elem).hide();
+	// })
 }
