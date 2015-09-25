@@ -6,11 +6,6 @@ SoulSeeker Search Tool
 
 @section('content')
 
-<?php
-var_dump($_SERVER["REQUEST_URI"]);
-var_dump($_SERVER["HTTP_HOST"]);
-
-?>
 <h3><a href="/">SoulSeeker ☆6・超越一覧</a></h3>
 
 <hr/>
@@ -36,8 +31,28 @@ var_dump($_SERVER["HTTP_HOST"]);
 
                 <!-- ここはボタンを押すと表示されるリスト -->
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/leader_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">リダランク</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/support_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">サポランク</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/leader_ranking/rarity/<?php
+                    $rarity = 6;
+                    if (preg_match("/rarity/", $_SERVER["REQUEST_URI"])) {
+                        preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"], $match);
+                        $rarity = $match[0];
+                        if($rarity !== '6' && $rarity !== '7') {
+                            $rarity = 6;
+                        }
+                    }
+                    echo $rarity;
+                    ?>">リダランク</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/support_ranking/rarity/<?php
+                    $rarity = 6;
+                    if (preg_match("/rarity/", $_SERVER["REQUEST_URI"])) {
+                        preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"], $match);
+                        $rarity = $match[0];
+                        if($rarity !== '6' && $rarity !== '7') {
+                            $rarity = 6;
+                        }
+                    }
+                    echo $rarity;
+                    ?>">サポランク</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">No.順</a></li>
                 </ul>
                 <!-- リストここまで -->

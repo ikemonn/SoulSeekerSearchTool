@@ -52,7 +52,7 @@ class SearchController extends Controller {
 
     // レア度で取得
     public function selectRarity($rarity) {
-        var_dump('指定されたレア度は:'. $rarity);
+        // var_dump('指定されたレア度は:'. $rarity);
         $full_heros = new Search();
         $heros = $full_heros->searchByRarity($rarity);
         return $this->returnSelectView($heros);

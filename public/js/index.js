@@ -91,10 +91,8 @@ function rarityRadioButtonChecked() {
 	parseInt(rarity, 10);
 	console.log(typeof rarity);
 	if(rarity === "7") {
-		console.log("7をとおったよ");
 		$('#rarity7').prop('checked', true);
 	} else {
-		console.log("６をとおったよ");
 		$('#rarity6').prop('checked', true);
 	}
 
