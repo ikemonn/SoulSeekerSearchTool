@@ -34,21 +34,20 @@ class SearchController extends Controller {
 
 
     // リーダー資質ランキング
-    public function sortLeaderRank() {
+    public function sortLeaderRank($rarity) {
         // リダ資質ソート
         $sort = 'Leader';
         $full_heros = new Search();
-        $heros = $full_heros->sortLeaderRank();
+        $heros = $full_heros->sortLeaderRank($rarity);
         return $this->returnSelectView($heros, $sort);
     }
 
     // サポート資質ランキング
-    public function sortSupportRank() {
+    public function sortSupportRank($rarity) {
         // サポ資質ソート
         $sort = 'Support';
-
         $full_heros = new Search();
-        $heros = $full_heros->sortSupportRank();
+        $heros = $full_heros->sortSupportRank($rarity);
 
         return $this->returnSelectView($heros, $sort);
     }

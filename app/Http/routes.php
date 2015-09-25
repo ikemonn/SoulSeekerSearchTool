@@ -17,10 +17,10 @@ Route::get('/', 'SearchController@selectAll');
 
 
 // リーダー資質ランキング
-Route::get('leader_ranking','SearchController@sortLeaderRank');
+Route::get('leader_ranking/rarity/{rarity}','SearchController@sortLeaderRank');
 
 // サポート資質ランキング
-Route::get('support_ranking','SearchController@sortSupportRank');
+Route::get('support_ranking/rarity/{rarity}','SearchController@sortSupportRank');
 
 Route::get('input','SearchController@input');
 

@@ -36,8 +36,8 @@ var_dump($_SERVER["HTTP_HOST"]);
 
                 <!-- ここはボタンを押すと表示されるリスト -->
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href=<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/leader_ranking>リダランク</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href=<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/support_ranking>サポランク</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/leader_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">リダランク</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/support_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">サポランク</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="./">No.順</a></li>
                 </ul>
                 <!-- リストここまで -->
@@ -49,11 +49,11 @@ var_dump($_SERVER["HTTP_HOST"]);
         <form id="rarity-form">
             <div class="form-group">
                 <div class="radio-inline">
-                    <input type="radio" value="rarity/6" name="rarity" id="rarity6" onclick="location.href=this.value" checked>
+                    <input type="radio" value="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/6" name="rarity" id="rarity6" onclick="location.href=this.value" checked>
                     <label for="rarity6">☆6</label>
                 </div>
                 <div class="radio-inline">
-                    <input type="radio" value="rarity/7" name="rarity" id="rarity7" onclick="location.href=this.value">
+                    <input type="radio" value="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/7" name="rarity" id="rarity7" onclick="location.href=this.value">
                     <label for="rarity7">超越</label>
                 </div>
             </div>

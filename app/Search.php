@@ -35,13 +35,13 @@ class Search extends Model
     }
 
     // リーダー資質ランキングでソート
-    public function sortLeaderRank() {
-    	return $this->translateTypeName(Search::joinRanking()->orderBy('ranking.leader_rank','asc')->idAsc()->get());
+    public function sortLeaderRank($rarity) {
+    	return $this->translateTypeName(Search::joinRanking()->where('rarity', '=', $rarity)->orderBy('ranking.leader_rank','asc')->idAsc()->get());
     }
 
     // サポ資質ランキングでソート
-    public function sortSupportRank() {
-    	return $this->translateTypeName(Search::joinRanking()->orderBy('ranking.support_rank','asc')->idAsc()->get());
+    public function sortSupportRank($rarity) {
+    	return $this->translateTypeName(Search::joinRanking()->where('rarity', '=', $rarity)->orderBy('ranking.support_rank','asc')->idAsc()->get());
     }
 
     // タイプを対応するものに変換する
