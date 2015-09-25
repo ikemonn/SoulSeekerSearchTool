@@ -49,7 +49,7 @@ var_dump($_SERVER["HTTP_HOST"]);
         <form id="rarity-form">
             <div class="form-group">
                 <div class="radio-inline">
-                    <input type="radio" value="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/6" name="rarity" id="rarity6" onclick="location.href=this.value" checked>
+                    <input type="radio" value="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/6" name="rarity" id="rarity6" onclick="location.href=this.value">
                     <label for="rarity6">☆6</label>
                 </div>
                 <div class="radio-inline">

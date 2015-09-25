@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use App\Search;
 use Input;
 use DB;
@@ -15,12 +16,9 @@ class SearchController extends Controller {
         if (empty($input['name']) === false) {
             return $this->selectName($input['name']);
         } else {
-            // No順ソート
-            $sort = 'No';
-
-            $full_heros = new Search();
-            $heros = $full_heros->selectAll();
-            return $this->returnSelectView($heros, $sort);
+            // パラメタ無しでdomainにアクセスしてきた時は☆6のNoソートにリダイレクト
+            $host = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+            return Redirect::to($host . $_SERVER["HTTP_HOST"] . '/rarity/6');
         }
     }
 

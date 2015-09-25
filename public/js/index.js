@@ -27,6 +27,8 @@ $(document).ready(function () {
 	// レア度のラジオボタンをクリックされた時に、タイプの表示非表示を切り替え
 	$('input[name=rarity]').click(refineRarity);
 
+	// ラジオボタンのチェック
+	rarityRadioButtonChecked();
 });
 
 
@@ -80,26 +82,21 @@ function selectAll(isSelectAll) {
 function refineRarity() {
 	// 全てのタイプを取得し、選択されたものだけ表示する
 	var all_type_list = $('#rarity-form [name=rarity]:checked').map(function(){return $(this).val();});
+}
 
-	// console.log(all_type_list);
-	// var num = 6;
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: "rarity/" + num,
-	// 	data: "",
-	// 	success: function(msg){
-	// 	alert( "Data Saved: " + msg );
-	// }
-	// });
-	// var selected_type_list = $('#type-form [name=type]:checked').map(function(){return $(this).val();});
-	// var unselected_type_list = $(all_type_list).not(selected_type_list).get();
-	//
-	// // 表示
-	// $.each(selected_type_list, function(index, elem) {
-	// 	$('.' + elem).show();
-	// })
-	// // 非表示
-	// $.each(unselected_type_list, function(index, elem) {
-	// 	$('.' + elem).hide();
-	// })
+// レア度のラジオボタンのチェックをURLのパラメタで判定
+function rarityRadioButtonChecked() {
+	var pathname = location.pathname;
+	var rarity = pathname.replace(/[^0-9^\.]/g,"");
+	parseInt(rarity, 10);
+	console.log(typeof rarity);
+	if(rarity === "7") {
+		console.log("7をとおったよ");
+		$('#rarity7').prop('checked', true);
+	} else {
+		console.log("６をとおったよ");
+		$('#rarity6').prop('checked', true);
+	}
+
+	console.log(rarity);
 }
