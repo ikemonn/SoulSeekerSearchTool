@@ -38,7 +38,7 @@ var_dump($_SERVER["HTTP_HOST"]);
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/leader_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">リダランク</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/support_ranking/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">サポランク</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="./">No.順</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"]?>/rarity/<?php preg_match("/[0-9]+/",$_SERVER["REQUEST_URI"],$match); echo $match[0]; ?>">No.順</a></li>
                 </ul>
                 <!-- リストここまで -->
             </div>

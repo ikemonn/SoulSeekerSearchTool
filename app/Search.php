@@ -31,7 +31,7 @@ class Search extends Model
 
     // 指定されたレア度の情報を取得
     public function searchByRarity($rarity) {
-    	return $this->translateTypeName(Search::joinRanking()->where('rarity', '=', $rarity)->get());
+    	return $this->translateTypeName(Search::joinRanking()->where('rarity', '=', $rarity)->idAsc()->get());
     }
 
     // リーダー資質ランキングでソート
