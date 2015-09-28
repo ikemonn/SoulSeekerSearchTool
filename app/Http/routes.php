@@ -14,8 +14,6 @@
 // 一覧表示
 Route::get('/', 'SearchController@selectAll');
 
-
-
 // リーダー資質ランキング
 Route::get('leader_ranking/rarity/{rarity}','SearchController@sortLeaderRank');
 
@@ -33,6 +31,9 @@ Route::get('rarity/{rarity}','SearchController@selectRarity');
 // ランキングの計算
 Route::resource('calc', 'CalcRankingController');
 
+// CSVのimport
+Route::get('import', 'SearchController@import');
+Route::post('import', 'CSVController@index');
 
 
 // 名前検索

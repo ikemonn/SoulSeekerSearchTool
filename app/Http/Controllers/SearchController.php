@@ -70,4 +70,9 @@ class SearchController extends Controller {
         return view($view_name)->with($values);
     }
 
+    // CSVのimport
+    public function import() {
+        return view('import');
+    }
+
 }
