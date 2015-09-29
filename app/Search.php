@@ -8,6 +8,8 @@ use Redis;
 class Search extends Model
 {
     protected $table = 'full_heros';
+    protected $fillable = ['name', 'type', 'attack_speed', 'move_speed', 'critical', 'attack', 'attack_support', 'defence', 'defence_support', 'hp', 'hp_support', 'rarity'];
+    public $timestamps = false;
 
     // rankingテーブルとのjoinクエリ
     public function scopeJoinRanking($query) {
@@ -68,5 +70,30 @@ class Search extends Model
             $hero_data->type_name = $type;
         }
         return $heros;
+    }
+
+    public function delateAllData() {
+        Search::truncate();
+    }
+
+    // キャラデータをinsertする
+    public function insertData($chara_data) {
+
+            $new_chara_data = Search::firstOrNew(['id' => $chara_data[0]]);
+            $new_chara_data->id = $chara_data[0];
+            $new_chara_data->name = $chara_data[1];
+            $new_chara_data->type = $chara_data[2];
+            $new_chara_data->attack_speed = $chara_data[3];
+            $new_chara_data->move_speed = $chara_data[4];
+            $new_chara_data->critical = $chara_data[5];
+            $new_chara_data->attack = $chara_data[6];
+            $new_chara_data->attack_support = $chara_data[7];
+            $new_chara_data->defence = $chara_data[8];
+            $new_chara_data->defence_support = $chara_data[9];
+            $new_chara_data->hp = $chara_data[10];
+            $new_chara_data->hp_support = $chara_data[11];
+            $new_chara_data->rarity = $chara_data[12];
+            $new_chara_data->save();
+
     }
 }

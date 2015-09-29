@@ -20,4 +20,7 @@ class Ranking extends Model
         }
     }
 
+    public function delateAllData() {
+        Ranking::truncate();
+    }
 }

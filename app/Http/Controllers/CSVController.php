@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 use Input;
 use Validator;
 use Redirect;
+use Excel;
+use SplFileObject;
+use App\Search;
+use App\Ranking;
+use App\Http\Controllers\CalcRankingController;
 
 class CSVController extends Controller
 {
@@ -22,22 +27,6 @@ class CSVController extends Controller
         // GET ALL THE INPUT DATA , $_GET,$_POST,$_FILES.
         $input = Input::all();
 
-    //     // VALIDATION RULES
-    //     $rules = array(
-    //         'file' => 'required',
-    //     );
-       //
-    //     var_dump($input);
-    //     exit;
-    //    // PASS THE INPUT AND RULES INTO THE VALIDATOR
-    //     $validation = Validator::make($input, $rules);
-       //
-    //     // CHECK GIVEN DATA IS VALID OR NOT
-    //     if ($validation->fails()) {
-    //         return Redirect::to('/import')->with('message', $validation->errors->first());
-    //     }
-
-
         $file = array_get($input,'csv');
         var_dump($file);
         // SET UPLOAD PATH
@@ -48,12 +37,25 @@ class CSVController extends Controller
         // $fileName = rand(11111, 99999) . '.' . $extension;
         // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
         $upload_success = $file->move($set_path, $extension);
-        var_dump($extension);
-        var_dump($set_path);
-        exit;
-        // IF UPLOAD IS SUCCESSFUL SEND SUCCESS MESSAGE OTHERWISE SEND ERROR MESSAGE
+        // var_dump($extension);
+        // var_dump($set_path);
         if ($upload_success) {
-            return Redirect::to('/import')->with('message', 'Image uploaded successfully');
+
+
+            $file = new SplFileObject($set_path . $extension);
+            $file->setFlags(SplFileObject::READ_CSV);
+            $search = new Search();
+
+            $search->delateAllData();
+            // ファイル内のデータループ
+            foreach ($file as $key => $line) {
+                $search->insertData($line);
+            }
+
+            $ranking = new Ranking();
+            $ranking->delateAllData();
+
+            return Redirect::to('/calc')->with('message', 'Image uploaded successfully');
         }
 
 

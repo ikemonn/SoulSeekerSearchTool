@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\CalcRanking;
 use App\Ranking;
+use Redirect;
 
 class CalcRankingController extends Controller
 {
@@ -32,6 +33,7 @@ class CalcRankingController extends Controller
         $ranking = new Ranking();
         $ranking->insertData($characterData);
 
+        return Redirect::to('/');
     }
 
     // リーダーランキングのセット
