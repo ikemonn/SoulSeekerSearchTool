@@ -49,7 +49,9 @@ class CSVController extends Controller
             $search->delateAllData();
             // ファイル内のデータループ
             foreach ($file as $key => $line) {
-                $search->insertData($line);
+                if($line[0] > 0) {
+                    $search->insertData($line);
+                }
             }
 
             $ranking = new Ranking();
